@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="form4Category" type="enter.lzj.filter.category.domain.Form4Category"></form-bean>
+		<form-bean name="form4User" type="enter.lzj.user.domain.Form4User"></form-bean>
+		<form-bean name="form4Car" type="enter.lzj.car.daomain.Form4Car"></form-bean>
+		<form-bean name="form4Order" type="enter.lzj.myorder.domain.Form4Order"></form-bean>
+	</form-beans>
+	<action-mappings>
+		
+		<action path="/categoryQueryAll" 
+				type="enter.lzj.filter.category.servlet.MyAction"
+				scope="request"
+				parameter="categoryQueryAll"
+				validate="false"
+		>
+			<forward name="category" path="/WEB-INF/jsp/frame/muen.jsp" redirect="false"></forward>
+		</action>
+		<action path="/categoryQueryAllBook" 
+				type="enter.lzj.filter.category.servlet.MyAction"
+				scope="request"
+				parameter="categoryQueryAllBook"
+				validate="false"
+		>
+			<forward name="categorybooks" path="/WEB-INF/jsp/category/books.jsp" redirect="false"></forward>
+		</action>
+		<action path="/bookSingleQuery" 
+				type="enter.lzj.filter.category.servlet.MyAction"
+				scope="request"
+				parameter="bookSingleQuery"
+				validate="false"
+		>
+				<forward name="bookshow" path="/WEB-INF/jsp/category/bookshow.jsp" redirect="false"></forward>
+		</action>
+		
+		<!--__________________________________-user____________________________________-->
+		<action path="/register" 
+				type="enter.lzj.user.servlet.MyAction"
+				scope="request"
+				name="form4User"
+				parameter="register"
+				validate="false"
+		>
+			<forward name="alive" path="/WEB-INF/jsp/user/alive.jsp" redirect="false"></forward>
+		</action>
+		<action path="/alive" 
+				type="enter.lzj.user.servlet.MyAction"
+				scope="request"
+				name="form4User"
+				parameter="alive"
+				validate="false"
+		>
+			<forward name="success" path="/WEB-INF/jsp/user/success.jsp" redirect="false"></forward>
+		</action>
+		<action path="/login" 
+				type="enter.lzj.user.servlet.MyAction"
+				scope="request"
+				name="form4User"
+				parameter="login"
+				validate="false"
+		>
+			<forward name="frame" path="/frame" redirect="false"></forward>	
+			<forward name="fail" path="/WEB-INF/jsp/user/fail.jsp" redirect="false"></forward>
+		</action>
+		<action path="/muenbar" 
+				type="enter.lzj.user.servlet.MyAction"
+				scope="request"
+				parameter="muenbar"
+				validate="false"
+		>
+			<forward name="muenbar" path="/muenbar" redirect="false"></forward>
+		</action>
+		<action path="/exit" 
+				type="enter.lzj.user.servlet.MyAction"
+				scope="request"
+				parameter="exit"
+				validate="false"
+		>
+			<forward name="frame" path="/frame" redirect="false"></forward>
+		</action>
+		<!-- ____________________________car____________________________________ -->
+		<action path="/addCar" 
+				type="enter.lzj.car.servlet.Action4Car"
+				scope="request"
+				name="form4Car"
+				parameter="addCar"
+				validate="false"
+		>
+			<forward name="car_add_success" path="/WEB-INF/jsp/category/car_add_success.jsp" redirect="false"></forward>
+		</action>
+		<action path="/carQueryAll" 
+				type="enter.lzj.car.servlet.Action4Car"
+				scope="request"
+				parameter="carQueryAll"
+				validate="false"
+		>
+			<forward name="carforward" path="/WEB-INF/jsp/car/carforward.jsp" redirect="false"></forward>
+			<forward name="carisnothing" path="/WEB-INF/jsp/car/carisnothing.jsp" redirect="false"></forward>
+		</action>
+		<!-- _____________________________order___________________________ -->
+		<action path="/pay" 
+				type="enter.lzj.myorder.servlet.Action4Order"
+				name="form4Order"
+				scope="request"
+				parameter="pay"
+				validate="false"
+		>
+			<forward name="pay_success" path="/WEB-INF/jsp/order/pay_fail.jsp" redirect="false"></forward>
+			<forward name="pay_fail" path="/WEB-INF/jsp/order/pay_success.jsp" redirect="false"></forward>
+		</action>
+		<action path="/orderQueryAll" 
+				type="enter.lzj.myorder.servlet.Action4Order"
+				scope="request"
+				parameter="orderQueryAll"
+				validate="false"
+		>
+			<forward name="no_order" path="/WEB-INF/jsp/order/no_order.jsp" redirect="false"></forward>
+			<forward name="my_order" path="/WEB-INF/jsp/order/my_order.jsp" redirect="false"></forward>
+		</action>
+	
+	</action-mappings>
+		
+	<controller>
+		<set-property property="processorClass" value="org.springframework.web.struts.DelegatingRequestProcessor"/>
+	</controller>
+</struts-config>
+
+
+
