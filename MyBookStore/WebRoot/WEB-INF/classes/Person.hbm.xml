@@ -1,0 +1,69 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="enter.lzj.car.daomain.Form4Car" table="car">
+		<cache usage="read-write" region="enter.lzj.filter.category.domain.Form4Category"/>
+		<id name="uuid" type="string" column="uuid">
+			<!-- <generator class="increment"></generator> -->
+			<!-- 注意这里的主键生产策略好像不能很好的支持 -->
+		</id>
+			<property name="username" type="string" column="username" />
+			<property name="goods" type="string" column="goods"></property>
+			<property name="numbers" type="int" column="numbers"></property>
+			<property name="price" type="double" column="price"></property>
+			<property name="totals" type="double" column="totals"></property>
+			<property name="image" type="string" column="image"></property>
+			<property name="bookname" type="string" column="bookname"></property>
+			<property name="author" type="string" column="author"></property>
+	</class>
+	
+	<!--________________________________category______________________________________________  -->
+	<class name="enter.lzj.filter.category.domain.Form4Category" table="category">
+		<cache usage="read-write" region="enter.lzj.filter.category.domain.Form4Category"/>
+		<id name="cid" type="string" column="cid">
+			<!-- 注意这里的主键生产策略好像不能很好的支持 -->
+		</id>
+		<property name="cname" type="string" column="cname" />
+	</class>
+	<class name="enter.lzj.filter.category.domain.Form4Book" table="book">
+		<cache usage="read-write" region="enter.lzj.filter.category.domain.Form4Book"/>
+		<id name="bid" type="string" column="bid">
+			<!-- 注意这里的主键生产策略好像不能很好的支持 -->
+		</id>
+		<property name="image" type="string" column="image" />
+		<property name="cid" type="string" column="cid" />
+		<property name="bname" type="string" column="bname" />
+		<property name="author" type="string" column="author" />
+		<property name="price" type="string" column="price" />
+		<property name="isdel" type="string" column="isdel" />
+	</class>
+	
+	<!--____________________________user____________________________________________  -->
+	<class name="enter.lzj.user.domain.Form4User" table="users1">
+		<cache usage="read-write" region="enter.lzj.user.domain.Form4User"/>
+		<id name="uid" type="string" column="uid">
+			<!-- 注意这里的主键生产策略好像不能很好的支持 -->
+		</id>
+		<property name="username" type="string" column="username" />
+		<property name="password" type="string" column="password" />
+		<property name="email" type="string" column="email" />
+		<property name="state" type="boolean" column="state" />
+		<property name="code" type="string" column="code" />
+	</class>
+	<!--______________________________order__________________________________________________________  -->
+	 <class name="enter.lzj.myorder.domain.Form4Order" table="orders">
+		<cache usage="read-write" region="enter.lzj.myorder.domain.Form4Order"/>
+		<id name="ouid" type="string" column="ouid">
+			<!-- 注意这里的主键生产策略好像不能很好的支持 -->
+		</id>
+		<property name="carid" type="string"/>
+		<property name="username" type="string"/>
+		<property name="bookname" type="string"/>
+		<property name="state" type="boolean"/>
+		<property name="image" type="string"/>
+	</class> 
+</hibernate-mapping>
